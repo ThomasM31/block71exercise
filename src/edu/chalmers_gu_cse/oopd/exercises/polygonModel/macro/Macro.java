@@ -10,11 +10,13 @@ public class Macro {
     private final List<Transform> transforms = new ArrayList<>();
 
     // TODO: Step 2c: Implement this method (should be trivial)
-    public void addTransform(){}
+    public void addTransform(Transform t) {
+        transforms.add(t);
+    }
 
     // TODO: Step 2d: Implement a method transform. What signature should it have?
     // public ... transform(...){}
 
     // TODO: Step 2e: What design pattern have we just implemented?
-
+    //
 }

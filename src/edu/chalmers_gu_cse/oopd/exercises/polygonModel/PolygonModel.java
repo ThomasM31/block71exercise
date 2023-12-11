@@ -13,7 +13,7 @@ import java.util.List;
  * can be updated with new polygons; and a PolygonSetAnimator that
  * can update the position of the polygons over time.
  */
-public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
+public class PolygonModel implements ModelUpdateListener, Iterable<Polygon>{
 
     // TODO 8: For extra challenge:
     //  PubSub Pattern: Create several separate polygon sets,
@@ -22,12 +22,16 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
 
     private final PolygonSet polygonSet;
     private final PolygonSetAnimator animator;
+    private final Clock clock;
 
     public PolygonModel() {
         polygonSet = new PolygonSet();
         animator = new PolygonSetAnimator(polygonSet);
         animator.addListener(this);
-    }//constructor
+        clock = new Clock();
+        clock.addListener(this);
+        animate();
+        }//constructor
 
     // Delegate these methods to the polygon set
     public void addPolygon(Polygon p){
@@ -37,7 +41,7 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
 
     // Delegate these methods to the animator
     public void animate(){
-        animator.animate();
+        clock.animate();
     }
 
     @Override
