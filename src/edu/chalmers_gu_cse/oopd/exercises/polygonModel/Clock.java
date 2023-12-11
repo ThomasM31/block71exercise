@@ -15,7 +15,7 @@ public class Clock {
         while (running) {
             try {
                 Thread.sleep(500);
-                notifyObservers();
+                notifyAllObservers();
             } catch (InterruptedException e) {
                 running = false;
             }
@@ -30,7 +30,7 @@ public class Clock {
         listeners.remove(listener);
     }
 
-    void notifyObservers() {
+    void notifyAllObservers() {
         for (ModelUpdateListener l : listeners) {
             l.actOnModelUpdate();
         }
