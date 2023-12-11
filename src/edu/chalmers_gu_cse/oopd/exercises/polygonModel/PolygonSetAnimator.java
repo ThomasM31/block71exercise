@@ -5,7 +5,7 @@ import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Transform;
 import java.util.ArrayList;
 import java.util.List;
 
-/* package-private */ class PolygonSetAnimator{
+/* package-private */ class PolygonSetAnimator implements ModelUpdateListener{
     private final PolygonSet polygonSet;
     private int ticker = 0;
     private boolean moveForwards = true;
@@ -16,7 +16,7 @@ import java.util.List;
 
     // TODO: Step 2f: Update this method to use a Macro, instead of the current
     //   fixed behavior. What's the name of this design pattern?
-    public void update(){
+    public void actOnModelUpdate() {
         ticker++;
         int value = moveForwards ? 10 : -10;
         polygonSet.translate(value, value);
@@ -37,6 +37,4 @@ import java.util.List;
         for (ModelUpdateListener l : listeners)
             l.actOnModelUpdate();
     }
-
-
 }

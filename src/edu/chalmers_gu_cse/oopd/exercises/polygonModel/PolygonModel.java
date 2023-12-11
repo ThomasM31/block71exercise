@@ -30,6 +30,7 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon>{
         animator.addListener(this);
         clock = new Clock();
         clock.addListener(this);
+        clock.addListener(animator);
         animate();
         }//constructor
 
